@@ -3,24 +3,19 @@ import processing.core.PApplet;
 public class Sketch extends PApplet {
 	
 	
-  /**
-   * Called once at the beginning of execution, put your size all in this method
-   */
+  // Size Call
   public void settings() {
-	  // put your size call here
     size(1200, 600);
   }
 
-  /** 
-   * Called once at the beginning of execution.  Add initial set up
-   * values here i.e background, stroke, fill etc.
-   */
+  // Background Setup
   public void setup() {
     background(45, 150, 207);
   }
 
   /**
-   * Called repeatedly, anything drawn to the screen goes here
+   * Call repeatedly
+   * Everything draw on screen is here
    */
   public void draw() {
     draw_section_outlines();
@@ -35,37 +30,34 @@ public class Sketch extends PApplet {
     draw_section8();
   }
 
-  /**
-   * Draw the outlines for all sections
-   */
+    // Dividers for each sections
   public void draw_section_outlines() {
     stroke(0);
     noFill();
 
-    // Draw bottom row boxes
+    // Bottom Row Boxes
     rect(0, 300, 300, 300);
     rect(300, 300, 300, 300);
     rect(600, 300, 300, 300);
     rect(900, 300, 300, 300);
 
-    // Draw top row boxes
+    // Top Row Boxes
     rect(0, 0, 300, 300);
     rect(300, 0, 300, 300);
     rect(600, 0, 300, 300);
     rect(900, 0, 300, 300);
   }
   
-  /**
-   * Draws the bottom left section
-   */
+
+  // First Section
   public void draw_section1() {
     int intX = 0;
     int intY = 0;
 
     for (int intRow = 0; intRow < 30; intRow++) {
       for (int intColumn = 0; intColumn < 30; intColumn++) {
-        intX = 3 + 0;  // Instead of zero, calculate the proper intX location using 'intRow'
-        intY = 300 + 3 + 0; // Instead of zero, calculate the proper intY location using 'intColumn'
+        intX = 3 + (intRow * 10);  // Instead of zero, calculate the proper intX location using 'intRow'
+        intY = 300 + 3 + (intColumn * 10); // Instead of zero, calculate the proper intY location using 'intColumn'
 
         fill(255);
         noStroke();
@@ -74,46 +66,130 @@ public class Sketch extends PApplet {
     }
   }
 
-  /**
-   * Use the modulus operator and an if statement to select the color
-   * Don't loop from 30 to 60 to shift everything over, just add 300 to x.
-   */
+  // Second Section
   public void draw_section2() {
+    int intX = 0;
+    int intY = 0;
+    
+    for(int intRow = 0; intRow < 30; intRow ++) {
+      for(int intColumn = 0; intColumn < 30; intColumn++) {
+        intX = 3 + (intRow * 10 + 300); 
+        intY = 3 + 300 + (intColumn * 10);
 
+        if (intColumn % 2 != 0) {
+          fill(0);
+        }
+        else {
+          fill(255);
+        }
+              
+        rect(intX, intY, 5, 5);
+      }
+    }
   }
 
-  /**
-   * Use the modulus operator and an if/else statement to select the color.
-   * Don't use multiple 'if' statements.
-   */
+  // Section 3
   public void draw_section3() {
-
+    int intX = 0;
+    int intY = 0;
+  
+    for(int intRow = 0; intRow < 30; intRow ++) {
+      for(int intColumn = 0; intColumn < 30; intColumn++) {
+        intX = 3 + (intRow * 10 + 600);
+        intY = 3 + 300 + (intColumn * 10);
+  
+        if (intRow % 2 == 0){
+          fill(0);
+        }
+        else{
+          fill(255);
+        }
+              
+        rect(intX, intY, 5, 5);
+      }
+    }
   }
 
-  /**
-   * Use the modulus operator and just one 'if' statement to select the color.
-   */
+  // Section 4
   public void draw_section4() {
-
+    int intX = 0;
+    int intY = 0;
+  
+    for(int intRow = 0; intRow < 30; intRow ++) {
+      for(int intColumn = 0; intColumn < 30; intColumn++) {
+        intX = 3 + (intRow * 10 + 900);
+        intY = 3 + 300 + (intColumn * 10);
+  
+        if (intRow % 2 == 0 || intColumn % 2 != 0){
+          fill(0);
+        }
+        else {
+          fill(255);
+        }
+              
+        rect(intX, intY, 5, 5);
+      }
+    }   
   }
 
-  /**
-   * Do NOT use 'if' statements to complete 5-8. Manipulate the loops instead
-   */
+  // Section 5
   public void draw_section5() {
-
+    int intX = 0;
+    int intY = 0;
+  
+    for(int intRow = 0; intRow < 30; intRow ++) {
+      for(int intColumn = 29 - intRow; intColumn < 30; intColumn++) {
+        intX = 3 + (intRow * 10);
+        intY = 3 + (intColumn * 10);
+        
+        fill(255);
+        rect(intX, intY, 5, 5);
+      }
+    }
   }
 
+  // Section 6
   public void draw_section6() {
-
+    int intX = 0;
+    int intY = 0;
+  
+    for(int intRow = 0; intRow < 30; intRow ++) {
+      for(int intColumn = intRow + 30; intColumn >= 30; intColumn--) {
+        intX = 3 + (intColumn * 10); 
+        intY = 3 + (intRow * 10); 
+        
+        rect(intX, intY, 5, 5);
+      }
+    } 
   }
 
+  // Section 7
   public void draw_section7() {
-
+    int intX = 0;
+    int intY = 0;
+  
+    for(int intRow = 0; intRow < 30; intRow++) {
+      for(int intColumn = 89 - intRow; intColumn >= 60; intColumn--) {
+        intX = 3 + (intColumn * 10);  
+        intY = 3 + (intRow * 10); 
+        
+        rect(intX, intY, 5, 5);
+      }
+    }     
   }
   
+  // Section 8
   public void draw_section8() {
-
+    int intX = 0;
+    int intY = 0;
+  
+    for(int intRow = 0; intRow < 30; intRow++) {
+      for(int intColumn = intRow + 90; intColumn < 120; intColumn++) {
+        intX = 3 + (intColumn * 10);  
+        intY = 3 + (intRow * 10);
+         
+        rect(intX, intY, 5, 5);
+      }
+    }  
   }
-
 }
